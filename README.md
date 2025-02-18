@@ -2,6 +2,9 @@
 
 - CRA 
 - Configured tailwindcss 
+- Header
+- Login form
+- Sign Up form
 
 # Features
 - Login/Sign Up
