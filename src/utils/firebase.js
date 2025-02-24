@@ -12,7 +12,7 @@ import { getAuth } from "firebase/auth";
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAS3P6FGTXLgTBdLPTfBCSDJujB19SJuYM",
+  apiKey: "AIzaSyDFIemNshHreC_JNdTd8iv1KCvL4sOB4Ms",
   authDomain: "netflix-gpt-58c38.firebaseapp.com",
   projectId: "netflix-gpt-58c38",
   storageBucket: "netflix-gpt-58c38.firebasestorage.app",

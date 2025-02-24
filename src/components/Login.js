@@ -7,16 +7,17 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
-import { useNavigate } from "react-router-dom";
 import { addUser } from "../utils/slices/userSlice";
 import { useDispatch } from "react-redux";
+import { BG_IMG } from "../utils/constants";
 
 const Login = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-
   const [isSignIn, setIsSignIn] = useState(true);
   const [errorMsg, setErrorMsg] = useState(null);
+  const emailRef = useRef(null);
+  const passwordRef = useRef(null);
+  const nameRef = useRef(null);
 
   const toggleSignIn = () => {
     setIsSignIn(!isSignIn);
@@ -24,113 +25,42 @@ const Login = () => {
   };
 
   // useRef hook for input fields -->
-  const emailRef = useRef(null);
-  const passwordRef = useRef(null);
-  const nameRef = useRef(null);
 
   const handleValidateForm = async () => {
-    if (!emailRef.current || !passwordRef.current || !nameRef.current) {
-      console.log("Refs are not initialized yet!");
-      setErrorMsg("Form not complete. Please complete all fields");
-      return;
-    }
-
     const email = emailRef.current.value.trim();
     const password = passwordRef.current.value.trim();
-    const name = nameRef.current.value;
+    const name = nameRef?.current?.value?.trim() || "";
 
     console.log("Email entered: ", email);
     console.log("Password entered: ", password);
     console.log("Name entered: ", name);
 
-    const anyErrorMsg = checkValidData(email, password);
-    setErrorMsg(anyErrorMsg);
+    const validationError = checkValidData(email, password);
+    if (validationError) return setErrorMsg(validationError);
 
-    if (anyErrorMsg) return;
+    try {
+      const userCredential = isSignIn
+        ? await signInWithEmailAndPassword(auth, email, password)
+        : await createUserWithEmailAndPassword(auth, email, password);
 
-    if (isSignIn) {
-      /* Sign In (updated) logic */
-      try {
-        const userCredential = await signInWithEmailAndPassword(
-          auth,
-          email,
-          password
-        );
-        //Updating profile and name
+      console.log(
+        isSignIn ? "User signed in:" : "User created:",
+        userCredential.user
+      );
+      setErrorMsg(null);
 
-        updateProfile(userCredential.user, {
-          displayName: name,
-          photoURL:
-            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUNo-mkoj2Xj9uUKhxzRSlijz_JHIS7m9YTgDmEJYol-3Bxa_zyumkXAAWTNjnxCfHQZ4&usqp=CAU",
-        })
-          .then(() => {
-            // Profile updated!
-            const { uid, email, displayName, photoURL } = auth.currentUser;
-            dispatch(
-              addUser({
-                uid: uid,
-                email: email,
-                displayName: displayName,
-                photoURL: photoURL,
-              })
-            );
-            navigate("/browse");
-          })
-          .catch((error) => {
-            // An error occurred
-            setErrorMsg(error.message);
-          });
-
-        console.log("User signed in : ", userCredential.user);
-        navigate("/browse");
-
-        setErrorMsg(null);
-      } catch (error) {
-        console.error("Sign In Error:", error);
-
-        setErrorMsg(`${error.code} : ${error.message}`);
-      }
-    } else {
-      /* Sign Up logic */
-
-      try {
-        const userCredential = await createUserWithEmailAndPassword(
-          auth,
-          email,
-          password
-        );
-
-        updateProfile(userCredential.user, {
+      if (!isSignIn) {
+        await updateProfile(userCredential.user, {
           displayName: name,
           photoURL:
             "https://img.freepik.com/premium-vector/avatar-profile-icon-flat-style-male-user-profile-vector-illustration-isolated-background-man-profile-sign-business-concept_157943-38764.jpg?semt=ais_hybrid",
-        })
-          .then(() => {
-            // Profile updated!
-            const { uid, email, displayName, photoURL } = auth.currentUser;
-            dispatch(
-              addUser({
-                uid: uid,
-                email: email,
-                displayName: displayName,
-                photoURL: photoURL,
-              })
-            );
-            navigate("/browse");
-            setErrorMsg(null);
-          })
-          .catch((error) => {
-            // An error occurred
-            setErrorMsg(error.message);
-          });
-
-        console.log("User created : ", userCredential.user);
-        navigate("/browse");
-        setErrorMsg(null);
-      } catch (error) {
-        console.error("Sign Up Error:", error);
-        setErrorMsg(`${error.code} : ${error.message}`);
+        });
       }
+
+      const { uid, email: userEmail, displayName, photoURL } = auth.currentUser;
+      dispatch(addUser({ uid, email: userEmail, displayName, photoURL }));
+    } catch (error) {
+      setErrorMsg(`${error.code} : ${error.message}`);
     }
   };
 
@@ -138,11 +68,7 @@ const Login = () => {
     <div>
       <Header />
       <div className="absolute w-full h-full">
-        <img
-          className="object-cover w-full h-full"
-          src="https://assets.nflxext.com/ffe/siteui/vlv3/f268d374-734d-474f-ad13-af5ba87ef9fc/web/IN-en-20250210-TRIFECTA-perspective_92338d5d-6ccd-4b1a-8536-eb2b0240a55e_large.jpg"
-          alt="bg-img"
-        />
+        <img className="object-cover w-full h-full" src={BG_IMG} alt="bg-img" />
         <div className="absolute inset-0 bg-black opacity-50"></div>
       </div>
       <form

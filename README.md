@@ -15,6 +15,9 @@
 - Created redux store 
 - Implemented Sign out feature
 - Update Profile feature (Right-corner)
+- BugFix - Sign up user displayName, profile also
+- BugFix - User_logged_In ? "/browse" : "/"
+- Unsubscribe() called to stop multiple listeners during unmounting 
 <!-- - Fetching from TMDB Movies  -->
 
 # Features
