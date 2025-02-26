@@ -18,6 +18,16 @@
 - BugFix - Sign up user displayName, profile also
 - BugFix - User_logged_In ? "/browse" : "/"
 - Unsubscribe() called to stop multiple listeners during unmounting 
+- Register TMDB API & create an app & get access token 
+- Get data from TMDB "Now Playing Movies" list API
+- Custom hooks for NowPlayingVideos
+- CreatemovieSlice
+Update Store with movies Data
+Plannng for MainContainer, SecondContainer
+Fetch Data with Trailer Video
+Update Store with Trailer Video Data
+- Embedded the youtube video , autoplay=1 and mute=1
+- Tailwind for MainContainer catchy 
 <!-- - Fetching from TMDB Movies  -->
 
 # Features

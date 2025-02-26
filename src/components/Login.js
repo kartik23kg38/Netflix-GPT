@@ -31,9 +31,9 @@ const Login = () => {
     const password = passwordRef.current.value.trim();
     const name = nameRef?.current?.value?.trim() || "";
 
-    console.log("Email entered: ", email);
-    console.log("Password entered: ", password);
-    console.log("Name entered: ", name);
+    // console.log("Email entered: ", email);
+    // console.log("Password entered: ", password);
+    // console.log("Name entered: ", name);
 
     const validationError = checkValidData(email, password);
     if (validationError) return setErrorMsg(validationError);
@@ -43,10 +43,10 @@ const Login = () => {
         ? await signInWithEmailAndPassword(auth, email, password)
         : await createUserWithEmailAndPassword(auth, email, password);
 
-      console.log(
-        isSignIn ? "User signed in:" : "User created:",
-        userCredential.user
-      );
+      // console.log(
+      //   isSignIn ? "User signed in:" : "User created:",
+      //   userCredential.user
+      // );
       setErrorMsg(null);
 
       if (!isSignIn) {

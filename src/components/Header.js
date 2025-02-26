@@ -24,7 +24,7 @@ const Header = () => {
     });
   
     return () => {
-      console.log("🔴 Listener removed");
+      // console.log("🔴 Listener removed");
       unsubscribe();
     }; // Clean up the listener on unmount
   }, [dispatch, navigate]);
@@ -45,7 +45,7 @@ const Header = () => {
 
   return (
     <div className="flex justify-between absolute top-0 left-0 w-full h-16 bg-gradient-to-b from-black z-10">
-      <div className="ml-20 pl-16 z-10">
+      <div className="ml-8 z-10">
         <img
           className="w-52"
           src={netflix_LOGO}
