@@ -1,11 +1,16 @@
 import Header from "./Header";
-import useNowPlayingMovies from "../customHooks/useNowPlayingMovies.js";
 import SecondaryContainer from "./SecondaryContainer.js";
 import MainContainer from "./MainContainer.js";
+import useNowPlayingMovies from "../customHooks/useNowPlayingMovies.js";
+import usePopularMovies from "../customHooks/usePopularMovies.js";
+import useTopRatedMovies from "../customHooks/useTopRatedMovies.js";
+import useUpcomingMovies from "../customHooks/useUpcomingMovies.js";
 
 const Browse = () => {
   useNowPlayingMovies();
-
+  usePopularMovies();
+  useTopRatedMovies();
+  useUpcomingMovies();
   return (
     <div className="overflow-x-hidden min-h-screen">
       <Header />
