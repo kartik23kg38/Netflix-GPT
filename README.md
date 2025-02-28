@@ -28,7 +28,14 @@ Fetch Data with Trailer Video
 Update Store with Trailer Video Data
 - Embedded the youtube video , autoplay=1 and mute=1
 - Tailwind for MainContainer catchy 
-<!-- - Fetching from TMDB Movies  -->
+- Fetching from TMDB Movies 
+- Build Secondary Component
+- Build Movie List
+- BUild Movie Card
+- TMDB Image CDN URL
+- Awesome Browser page with Tailwind CSS
+<!-- - usePopularMovies Custom-hook -->
+
 
 # Features
 - Login/Sign Up

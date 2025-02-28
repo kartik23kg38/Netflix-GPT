@@ -5,7 +5,7 @@ import { API_OPTIONS } from "../utils/constants";
 
 const useNowPlayingMovies = () => {
   const dispatch = useDispatch();
-
+  
   const getNowPlayingMovies = async () => {
     try {
       const data = await fetch(
@@ -13,16 +13,15 @@ const useNowPlayingMovies = () => {
         API_OPTIONS
       );
       const json = await data.json();
-      // console.log("Fetched Movies:", json.results);
+      console.log("Fetched Movies:", json.results);
       dispatch(addNowPlayingMovies(json.results));
     } catch (error) {
       console.error("Error fetching movies:", error);
     }
   };
-
   useEffect(() => {
     getNowPlayingMovies();
-  }, [dispatch]);  // ✅ Added dispatch in dependencies
+  }, []);  // ✅ Added dispatch in dependencies
 
   return null;
 };

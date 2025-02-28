@@ -30,21 +30,18 @@ const Header = () => {
   }, [dispatch, navigate]);
   
 
-  const handleSignOut = () => {
-    signOut(auth)
-      .then(() => {
-        // Sign-out successful.
-      })
-      .catch((error) => {
-        // An error happened.
-
-        console.error("Sign out error:", error);
-        navigate("/error");
-      });
+  const handleSignOut = async () => {
+    try {
+      await signOut(auth);
+      dispatch(removeUser());  // ✅ Ensure user is removed from store
+      navigate("/");
+    } catch (error) {
+      console.error("Sign out error:", error);
+    }
   };
 
   return (
-    <div className="flex justify-between absolute top-0 left-0 w-full h-16 bg-gradient-to-b from-black z-10">
+    <div className="flex justify-between fixed top-0 left-0 w-full h-16 bg-gradient-to-b from-black z-10">
       <div className="ml-8 z-10">
         <img
           className="w-52"
@@ -55,7 +52,7 @@ const Header = () => {
       {user && (<div className="flex items-center">
         <div>
           <img
-            className="text-white w-14 h-14 rounded-full object-cover"
+            className="text-white w-12 h-12 md:w-14 md:h-14 rounded-full object-cover"
             src={user?.photoURL || "https://img.freepik.com/free-vector/error-alert-button-symbol_24877-83749.jpg"}
             alt="userProfile"
           />
