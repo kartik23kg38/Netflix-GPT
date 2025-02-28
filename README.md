@@ -34,7 +34,10 @@ Update Store with Trailer Video Data
 - BUild Movie Card
 - TMDB Image CDN URL
 - Awesome Browser page with Tailwind CSS
-<!-- - usePopularMovies Custom-hook -->
+- useNowPlayingMovies Custom-hook
+- usePopularMovies Custom-hook
+- useTopRatedMovies Custom-hook
+- useUpcomingMovies Custom-hook
 
 
 # Features
