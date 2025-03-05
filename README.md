@@ -22,10 +22,10 @@
 - Get data from TMDB "Now Playing Movies" list API
 - Custom hooks for NowPlayingVideos
 - CreatemovieSlice
-Update Store with movies Data
-Plannng for MainContainer, SecondContainer
-Fetch Data with Trailer Video
-Update Store with Trailer Video Data
+- Update Store with movies Data
+- Plannng for MainContainer, SecondContainer
+- Fetch Data with Trailer Video
+- Update Store with Trailer Video Data
 - Embedded the youtube video , autoplay=1 and mute=1
 - Tailwind for MainContainer catchy 
 - Fetching from TMDB Movies 
@@ -38,7 +38,9 @@ Update Store with Trailer Video Data
 - usePopularMovies Custom-hook
 - useTopRatedMovies Custom-hook
 - useUpcomingMovies Custom-hook
-
+- GPT Search Page
+- GPT Search Bar
+- ( ** ) :-- Multi-langugage feature support
 
 # Features
 - Login/Sign Up

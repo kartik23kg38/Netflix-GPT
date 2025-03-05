@@ -13,7 +13,7 @@ const useNowPlayingMovies = () => {
         API_OPTIONS
       );
       const json = await data.json();
-      console.log("Fetched Movies:", json.results);
+      // console.log("Fetched Movies:", json.results);
       dispatch(addNowPlayingMovies(json.results));
     } catch (error) {
       console.error("Error fetching movies:", error);
@@ -21,7 +21,7 @@ const useNowPlayingMovies = () => {
   };
   useEffect(() => {
     getNowPlayingMovies();
-  }, []);  // ✅ Added dispatch in dependencies
+  }, [dispatch]);  // ✅ Added dispatch in dependencies
 
   return null;
 };
