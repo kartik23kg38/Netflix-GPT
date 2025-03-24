@@ -1,4 +1,4 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { API_OPTIONS } from "../utils/constants";
 import { addTrailerVideo } from "../utils/slices/moviesSlice";
 import { useEffect, useRef } from "react";
@@ -6,6 +6,8 @@ import { useEffect, useRef } from "react";
 const useMovieTrailer = (movieId) => {
   const dispatch = useDispatch();
   const lastFetchedMovieId = useRef(null); // ✅ Store the last fetched movieId
+  const trailerVideo = useSelector(store => store.movies.trailerVideo);
+  
 
   useEffect(() => {
     if (!movieId || lastFetchedMovieId.current === movieId) return; 
@@ -34,7 +36,7 @@ const useMovieTrailer = (movieId) => {
       }
     };
 
-    getMovieTrailer();
+    !trailerVideo && getMovieTrailer();
   }, [movieId, dispatch]); // ✅ Runs only when `movieId` changes
 };
 

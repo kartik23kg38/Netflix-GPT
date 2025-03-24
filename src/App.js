@@ -11,7 +11,9 @@ import appStore from "./utils/appStore";
 import Login from "./components/Login";
 import Browse from "./components/Browse";
 
-function App() {
+// import dotenv from 'dotenv';
+// dotenv.config();
+const App = () => {
   // const NotFoundRedirect = () => {
   //   const user = useSelector((state) => state.user);
   //   return user ? <Navigate to="/browse" /> : <Navigate to="/" />;
@@ -20,6 +22,9 @@ function App() {
     const user = useSelector((state) => state.user);
     return user ? children : <Navigate to="/" />;
   };
+
+  // console.log("  API Key:", process.env)
+
 
   return (
     <Provider store={appStore}>

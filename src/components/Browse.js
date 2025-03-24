@@ -6,7 +6,9 @@ import useTopRatedMovies from "../customHooks/useTopRatedMovies.js";
 import useUpcomingMovies from "../customHooks/useUpcomingMovies.js";
 import useNowPlayingMovies from "../customHooks/useNowPlayingMovies.js";
 import { useSelector } from "react-redux";
-import GptSearchPage from "./GptSearchPage.js";
+import GptMovieSuggestions from "./GptMovieSuggestions.js";
+import GptSearchBar from "./GptSearchBar.js";
+import { BG_IMG } from "../utils/constants.js"; 
 
 const Browse = () => {
 
@@ -21,20 +23,35 @@ const Browse = () => {
   return (
     <div className="overflow-x-hidden min-h-screen">
       <Header />
+      
       {showGptSearch ? (
-        <GptSearchPage />
+        <div className="relative w-full">
+          {/* Background Image */}
+          <img
+            className="fixed inset-0 w-full h-full object-cover -z-10"
+            src={BG_IMG}
+            alt="bg-img"
+          />
+          
+          {/* Overlay for Better Visibility */}
+          <div className="absolute inset-0 bg-black/50 -z-10"></div>
+          
+          {/* Search Bar - Always Visible at Top */}
+          <div className="relative z-10 pt-6 pb-4">
+            <GptSearchBar />
+          </div>
+          
+          {/* Movie Suggestions Below Search Bar */}
+          <div className="relative z-10 pb-8">
+            <GptMovieSuggestions />
+          </div>
+        </div>
       ) : (
         <>
           <MainContainer />
           <SecondaryContainer />
         </>
       )}
-
-      <div className="relative h-screen flex items-center justify-center max-w-full text-center">
-        <h1 className="text-black text-opacity-70 font-bold text-4xl">
-          All the webseries, episodes, and shows...
-        </h1>
-      </div>
     </div>
   );
 };

@@ -3,6 +3,7 @@ import GptSearchBar from "./GptSearchBar";
 import GptMovieSuggestions from "./GptMovieSuggestions";
 import { BG_IMG } from "../utils/constants";
 
+
 const GptSearchPage = () => {
   return (
     <div className="relative w-full h-screen">

@@ -52,8 +52,8 @@ const Header = () => {
   const showGptSearch = useSelector((store) => store.gpt.showGptSearch);
 
   return (
-    <div className="flex justify-between absolute top-0 left-0 w-full h-16 bg-gradient-to-b from-black z-20">
-      <div className="ml-8 z-10">
+    <div className="fixed top-0 left-0 w-full bg-gradient-to-b from-black z-20 h-16 flex justify-between items-center">
+      <div className="ml-8">
         <img className="w-52" src={netflix_LOGO} alt="logo" />
       </div>
       {user && (

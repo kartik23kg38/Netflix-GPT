@@ -1,7 +1,6 @@
 {
   "projects": {
-    "default": "netflix-gpt-58c38",
-    "streamgpt": "streamgpt-e4211"
+    "default": "netflixgpt-2-453815"
   },
   "targets": {},
   "etags": {}
