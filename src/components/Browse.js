@@ -28,7 +28,7 @@ const Browse = () => {
         <div className="relative w-full">
           {/* Background Image */}
           <img
-            className="fixed inset-0 w-full h-full object-cover -z-10"
+            className="fixed inset-0 w-full h-full object-cover -z-10 sm:h-[50vh] md:h-[60vh] lg:h-full"
             src={BG_IMG}
             alt="bg-img"
           />

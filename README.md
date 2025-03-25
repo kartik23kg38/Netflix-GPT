@@ -41,6 +41,13 @@
 - GPT Search Page
 - GPT Search Bar
 - ( ** ) :-- Multi-langugage feature support
+- Get Open AI API Key
+- GPT Search API Call
+- Fetched gptMovieSuggestions from TMDB
+- Created gptSlices added data
+- Reused Movie Copmonent to make GptMovieSuggestions 
+- Memoizaition (Avoided un-necessary API Calls)
+- Made site Responsive
 
 # Features
 - Login/Sign Up

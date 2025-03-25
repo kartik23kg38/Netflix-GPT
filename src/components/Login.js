@@ -79,7 +79,7 @@ const Login = () => {
         className="px-4 py-4 min-h-[40vh] min-w-[300px] max-w-[90vw] w-[30vw] flex flex-col items-center bg-black/60 absolute top-1/2 left-1/2 transform -translate-x-1/2 translate-y-[-260px]"
       >
         <h3 className="self-start p-2 my-2 mx-6 font-bold text-white text-4xl">
-          {isSignIn ? "Sign in" : "Sign up U"}
+          {isSignIn ? "Sign in" : "Sign up"}
         </h3>
 
         {!isSignIn && (
@@ -112,7 +112,7 @@ const Login = () => {
           ref={nameRef}
           onClick={handleValidateForm}
         >
-          {isSignIn ? "Sign in" : "Sign up U"}
+          {isSignIn ? "Sign in" : "Sign up"}
         </button>
 
         <h1 className="text-white my-1">OR</h1>

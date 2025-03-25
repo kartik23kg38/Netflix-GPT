@@ -95,57 +95,40 @@ const GptSearchBar = () => {
     }
   };
 
-  // return (
-  //   <div className="bg-amber-400 flex items-center justify-center h-fit -mt-28">
-  //     <form
-  //       onSubmit={(e) => e.preventDefault()}
-  //       className="flex items-center bg-black px-6 py-2 m-2 gap-4 border border-red-600 rounded-lg overflow-hidden shadow-2xl"
-  //     >
-  //       <input
-  //         ref={searchText}
-  //         type="text"
-  //         placeholder={languagaeConstraints[langKey].gptPlaceholder}
-  //         className="px-4 py-3 w-96 outline-none rounded-lg placeholder-gray-600 bg-white text-black"
-  //       />
-  //       <button
-  //         type="submit"
-  //         onClick={handleGptSearchBarClick}
-  //         className="flex items-center gap-2 px-6 py-3 text-white text-lg rounded-lg transition-all duration-300 
-  //         bg-gradient-to-r from-red-500 via-orange-500 to-yellow-500 
-  //         hover:from-red-600 hover:via-orange-600 hover:to-yellow-600"
-  //       >
-  //         <IoMdSearch className="text-white text-2xl" />{" "}
-  //         {languagaeConstraints[langKey].search}
-  //       </button>
-  //     </form>
-  //   </div>
-  // );
 
   return (
-    <div className="w-full flex justify-center py-8">
+    <div className="w-full flex justify-center py-8 ">
       <form
         onSubmit={(e) => e.preventDefault()}
-        className="flex items-center bg-black px-6 py-2 m-2 gap-4 border border-red-600 rounded-lg overflow-hidden shadow-2xl"
+        className="flex items-center bg-black px-4 py-2 my-4 gap-2 
+                   border border-red-600 overflow-hidden 
+                   shadow-2xl w-full max-w-md 
+                   mx-4 md:mx-0 md:py-3 md:gap-2 md:rounded-lg"
       >
         <input
           ref={searchText}
           type="text"
           placeholder={languagaeConstraints[langKey].gptPlaceholder}
-          className="px-4 py-3 w-96 outline-none rounded-lg placeholder-gray-600 bg-white text-black"
+          className="px-4 py-2 w-full outline-none rounded-full
+                     placeholder-gray-600 bg-white text-black text-sm
+                     md:px-4 md:py-3 md:w-96 md:rounded-md md:text-base"
         />
         <button
           type="submit"
           onClick={handleGptSearchBarClick}
-          className="flex items-center gap-2 px-6 py-3 text-white text-lg rounded-lg transition-all duration-300 
-          bg-gradient-to-r from-red-500 via-orange-500 to-yellow-500 
-          hover:from-red-600 hover:via-orange-600 hover:to-yellow-600"
+          className="p-3 rounded-full bg-gradient-to-r from-red-500 
+                     via-orange-500 to-yellow-500 text-white flex items-center gap-2
+                     hover:from-red-600 hover:via-orange-600 
+                     hover:to-yellow-600 
+                     md:px-6 md:py-3 md:rounded-lg md:text-lg"
         >
-          <IoMdSearch className="text-white text-2xl" />{" "}
-          {languagaeConstraints[langKey].search}
+          <IoMdSearch className="text-white text-xl md:text-2xl" />
         </button>
       </form>
     </div>
   );
+  
+  
 
 };
 

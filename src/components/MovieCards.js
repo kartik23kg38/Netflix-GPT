@@ -7,7 +7,7 @@ const MovieCards = ({ poster_path }) => {
   }
 
   return (
-    <div className="w-48 mb-8 flex-shrink-0">
+    <div className="w-36 md:w-48 mb-8 flex-shrink-0">
       <img 
         className="w-full rounded-2xl object-cover" 
         src={IMG_CDN_URL + poster_path} 
